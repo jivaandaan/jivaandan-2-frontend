@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="../App.css" />
+  <script type="application/javascript" src="../assets/bootstrap/js/jquery.js"></script>
+  <script type="application/javascript" src="../assets/bootstrap/js/popper.js"></script>
+  <script type="application/javascript" src="../assets/bootstrap/js/bootstrap.js"></script>
+  <title>JivanDaan | Donor Form</title>
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar bg-dark">
+    <div class="container">
+      <div class="logo-box">
+        <a href="./index.html" class="text-white">
+          <img src="../assets/images/logo.png" alt="logo" class="logo" />
+          <span class="logo__text">JivanDaan</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Donor Form -->
+  <div class="section form container">
+    <div class="form-container">
+      <h1 class="form__title">
+        <a href="../index.html" class="back--btn"> &larr; </a>
+        &nbsp; Donor Form
+      </h1>
+      <div class="form__body">
+        <form class="form__content" id="donor_form" action="/sam">
+          <div class="form__group">
+            <input type="text" name="name" required id="name" class="form__input" placeholder="Full Name" />
+          </div>
+          <div class="form__group">
+            <input type="email" name="email" required id="email" class="form__input" placeholder="Email ID" />
+          </div>
+          <div class="form__group">
+            <input type="number" name="age" required id="age" class="form__input" placeholder="Age" />
+          </div>
+          <div class="form__group">
+            <select name="bloodGroup" id="bloodGroup" class="form__input" placeholder="Blood Group" required>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="o+">o+</option>
+              <option value="o-">o-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+          </div>
+          <div class="form__group">
+            <input type="number" name="phone" required id="phone" class="form__input" placeholder="Phone Number" />
+          </div>
+          <div>
+            <h2 class="form__question">
+              Did you ever test +ve for covid-19 infection?
+            </h2>
+            <div class="form__group">
+              <label for="isInfected-yes"> Yes</label>
+              <input type="radio" name="isInfected" value="yes" required id="isInfected-yes" class="form__input" />
+              <label for="isInfected-no"> No</label>
+              <input type="radio" name="isInfected" value="No" required id="isInfected-no" class="form__input" />
+            </div>
+          </div>
+
+          <div class="form__group">
+            <label for="recoveryDate">
+              What was your date of recovery?
+            </label>
+            <input type="date" name="recoveryDate" required id="recoveryDate" class="form__input" />
+          </div>
+
+          <div>
+            <h2 class="form__question">
+              Did you ever Donate plasma before if yes when?
+            </h2>
+            <div class="form__group">
+              <label for="isDonated-yes">Yes</label>
+              <input type="radio" name="isDonated" value="yes" required id="isDonated-yes" class="form__input" />
+            </div>
+
+            <input type="date" name="donatedDate" required id="donatedDate" class="form__input" />
+
+            <div class="form__group">
+              <label for="isDonated-no">No</label>
+              <input type="radio" name="isDonated" value="no" required id="isDonated-no" class="form__input" />
+            </div>
+          </div>
+          <button type="submit" class="btn btn--green btn-block" id="donorSubmitBtn">
+            submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+</html>
