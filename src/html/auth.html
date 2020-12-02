@@ -33,25 +33,28 @@
         </a>
     </nav>
 
-    <div id="auth-form">
-
-        {{ onCall() }}
-
-        <div id="form" class="container">
-            <center>
+    <center>
+        <div id="auth-form">
+            <div id="form" class="container">
                 <img src="../assets/images/logo.png" id="login-logo" alt="logo" />
                 <br> <br>
                 <h2 class="text-auth">Authentication Page</h2>
-                <a href="./login.html"><button class="auth-button" id="login">LOGIN</button></a>
+                <a href="./login.html"><button class="auth-button btn btn-info" id="login">LOGIN</button></a>
                 <br><br>
-                <a href="./signup.html"><button class="auth-button" id="signup">SIGNUP</button></a>
-            </center>
+                <a href="./signup.html"><button class="auth-button btn btn-primary" id="signup">SIGNUP</button></a>
+            </div>
+            <br>
+            <a href="../index.html"><button class="auth-button btn btn-danger">Back</button></a>
         </div>
-    </div>
+    </center>
 
     <script type="module" src="../js/lib/localforage.js"></script>
-
-    <script type="application/javascript" src="../js/auth/auth.js"></script>
+    <script>
+        if (localStorage.getItem("auth-token") != null) {
+            alert("already logged in")
+            window.location.pathname = "../../index.html"
+        }
+    </script>
 
 </body>
 

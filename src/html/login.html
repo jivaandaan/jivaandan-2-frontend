@@ -22,31 +22,38 @@
         </a>
     </nav>
 
-    <!-- header -->
-
-    <div id="form" class="container">
+    <div id="login-form" class="container">
         <center>
-            <img src="../assets/images/logo.png" id="login-logo" alt="logo" />
-            <br>
-            <h1 class="logo__text">JivanDaan Login</h1>
+            <br> <br>
+            <h1 class="logo__text">Login Page</h1>
+            <br> <br>
         </center>
+
+        <div v-if="msg_bool" class="alert alert-primary" role="alert">
+            {{ msg }}
+        </div>
+        <div v-if="err_bool" class="alert alert-danger" role="alert">
+            {{ err_msg }}
+        </div>
 
         <form>
             <div class="form-group">
                 <label for="userEmail">Email address</label>
-                <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
+                <input type="email" v-model="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
                     placeholder="Enter email">
             </div>
             <div class="form-group">
                 <label for="userPassword">Password</label>
-                <input type="password" class="form-control" id="userPassword" placeholder="Password">
+                <input type="password" v-model="password" class="form-control" id="userPassword" placeholder="Password">
             </div>
         </form>
+
         <center>
-            <a href="./auth.html"><button class="btn btn-info">Back</button></a>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="./auth.html"><button class="btn btn-danger">Back</button></a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" v-on:click="func_login" class="btn btn-primary">Submit</button>
         </center>
     </div>
+
     <script type="module" src="../js/lib/localforage.js"></script>
     <script>
         if (localStorage.getItem("auth-token") != null) {
@@ -54,6 +61,8 @@
             window.location.pathname = "../index.html"
         }
     </script>
+    <script src="../js/vue/vue.js"></script>
+    <script src="../js/auth/login.js"></script>
     <br><br><br><br>
     <br><br><br><br>
     <br><br><br><br>
