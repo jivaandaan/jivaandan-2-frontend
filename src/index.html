@@ -9,6 +9,7 @@
   <script type="application/javascript" src="./assets/bootstrap/js/jquery.js"></script>
   <script type="application/javascript" src="./assets/bootstrap/js/popper.js"></script>
   <script type="application/javascript" src="./assets/bootstrap/js/bootstrap.js"></script>
+  <script type="application/javascript" src="./js/vue/vue.js"></script>
   <title>JivanDaan</title>
 </head>
 
@@ -39,25 +40,15 @@
       &nbsp;
       <span class="text--bold red">Blood</span>
     </div>
-    <div class="header__buttons">
-      <a href="/html/auth.html" class="btn btn--red">Donor</a>
-      <a href="/html/auth.html" class="btn btn--green">Recipient</a>
+    <div id="start-form" class="header__buttons">
+      <button v-on:click="func_donor()" class="btn btn--red">Donor</button>
+      <button v-on:click="func_rece()" class="btn btn--green">Recipient</button>
     </div>
   </header>
 
-  <div class="container">
-    <center>
-      <a href="./html/donorForm.html"><button> donor </button></a>
-      <br>
-      <a href="./html/receipent.html"><button> receipent </button></a>
-    </center>
-
-  </div>
-
-
+  <script type="module" src="/js/lib/localforage.js"></script>
+  <script src="./app.js"></script>
 
 </body>
-
-<script src="./app.js"></script>
 
 </html>

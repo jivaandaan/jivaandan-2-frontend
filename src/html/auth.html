@@ -9,6 +9,7 @@
     <script type="application/javascript" src="../assets/bootstrap/js/jquery.js"></script>
     <script type="application/javascript" src="../assets/bootstrap/js/popper.js"></script>
     <script type="application/javascript" src="../assets/bootstrap/js/bootstrap.js"></script>
+    <script type="application/javascript" src="../js/vue/vue.js"></script>
     <title>JivanDaan</title>
     <style>
         #form {
@@ -35,22 +36,31 @@
 <body>
 
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="../index.html">
             <img src="../assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
             JivanDaan
         </a>
     </nav>
 
-    <div id="form" class="container">
-        <center>
-            <img src="../assets/images/logo.png" id="login-logo" alt="logo" />
-            <br> <br>
-            <h2 class="text-auth">Authentication Page</h2>
-            <a href="./login.html"><button class="auth-button" id="login">LOGIN</button></a>
-            <br><br>
-            <a href="./signup.html"><button class="auth-button" id="signup">SIGNUP</button></a>
-        </center>
+    <div id="auth-form">
+
+        {{ onCall() }}
+
+        <div id="form" class="container">
+            <center>
+                <img src="../assets/images/logo.png" id="login-logo" alt="logo" />
+                <br> <br>
+                <h2 class="text-auth">Authentication Page</h2>
+                <a href="./login.html"><button class="auth-button" id="login">LOGIN</button></a>
+                <br><br>
+                <a href="./signup.html"><button class="auth-button" id="signup">SIGNUP</button></a>
+            </center>
+        </div>
     </div>
+
+    <script type="module" src="../js/lib/localforage.js"></script>
+
+    <script type="application/javascript" src="../js/auth/auth.js"></script>
 
 </body>
 
