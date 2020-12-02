@@ -75,24 +75,11 @@
           <div class="form__group">
             <input type="text" name="Relation" required id="relation" class="form__input" placeholder="Relation With Patient" />
           </div>
-          
-          <div>
-            <h2 class="form__question">
-              Did you ever test +ve for covid-19 infection?
-            </h2>
-            <div class="form__group">
-              <label for="isInfected-yes"> Yes</label>
-              <input type="radio" name="isInfected" value="yes" required id="isInfected-yes" class="form__input" />
-              <label for="isInfected-no"> No</label>
-              <input type="radio" name="isInfected" value="No" required id="isInfected-no" class="form__input" />
-            </div>
-          </div>
-
           <div class="form__group">
-            <label for="recoveryDate">
-              What was your date of recovery?
-            </label>
-            <input type="date" name="recoveryDate" required id="recoveryDate" class="form__input" />
+            <input type="number" name="phone" required id="phone" class="form__input" placeholder="Phone Number" />
+          </div>
+          <div class="form__group">
+            <input type="text" name="Patient_Adress" required id="Patient_Adress" class="form__input" placeholder="Patient_Adress" />
           </div>
 
           <div>
@@ -120,12 +107,12 @@
   </div>
 
   <script type="module" src="../js/lib/localforage.js"></script>
-  <script>
+  <!-- <script>
     if (localStorage.getItem("auth-token") == null) {
       alert("Please login-in first")
       window.location.pathname = "../index.html"
     }
-  </script>
+  </script> -->
 
 </body>
 
