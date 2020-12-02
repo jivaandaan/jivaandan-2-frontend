@@ -36,7 +36,7 @@
       <div class="form__body">
         <form class="form__content" id="recipient_form" action="/sam">
           <div class="form__group">
-            <input type="text" name="name" required id="name" class="form__input" placeholder="Full Name" />
+            <input type="text" name="name" required id="name" class="form__input" placeholder="Patient Name" />
           </div>
           <div class="form__group">
             <input type="email" name="email" required id="email" class="form__input" placeholder="Email ID" />
@@ -46,9 +46,9 @@
           </div>
           <div class="form__group">
             <select name="bloodGroup" id="Gender" class="form__input" placeholder="Gender" required>
-              <option value="male">male</option>
-              <option value="female">female</option>
-              <option value="trans">trans</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="trans">Trans</option>
             </select>
           </div>
           <div class="form__group">
@@ -87,15 +87,29 @@
              Requisition for Convalescent plasma therapy issued by threating Doctor
             </h2>
             <div class="form__group">
-              <input type="file" name="file" required id="file" class="form__input" />
+              <input type="file" name="file" required id="file" class="form__input"   accept="application/pdf,image/*" />
             </div>
+            <div>
+              <h4 class="form__question">
+               <p>I Consent to the condition.</p>
+               <p>The information provided here is complete and correct to the best of my knowledge. I authorize Plasmadonor.in to display my Name, Mobile/telephone Number,Email Address and/or postal address to the person who is willing to donate Plasma. I release Plasmadonor.in all organizers, trustees, volunteers and assistants in this project from all damages whatsoever and waive all rights to compensation in case injury or loss. I agree to receive information about Plasmadonor.in through various media including print and electronic media with a facility to opt-out.
+               </p>
+              </h4>
+            
+              <div class="form__group">
+                <input type="checkbox" name="recieveraccept" value="I_Accepted" required id="recieveraccept" style="align-content:center;" />
+                <label for="recieveraccept"style="align-content:center; float:left" >I Accept</label>
+               <a href=""> Terms Of Use</a>
+              </div>
+              <div>
+                <h2 class="form__question">
+                 Do you have any message for us?
+                </h2>
+                <div class="form__group">
+                  <input type="text" name="message" required id="message" class="form__input" placeholder="Message" />
+                </div>
+                <div>
 
-            <input type="date" name="donatedDate" required id="donatedDate" class="form__input" />
-
-            <div class="form__group">
-              <label for="isDonated-no">No</label>
-              <input type="radio" name="isDonated" value="no" required id="isDonated-no" class="form__input" />
-            </div>
           </div>
           <button type="submit" class="btn btn--green btn-block" id="donorSubmitBtn">
             submit
@@ -104,7 +118,9 @@
       </div>
     </div>
   </div>
-
+  <br><br><br><br>
+  <br><br><br><br>
+  <br><br><br><br>
   <script type="module" src="../js/lib/localforage.js"></script>
   <script>
     if (localStorage.getItem("auth-token") == null) {
