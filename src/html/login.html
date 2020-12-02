@@ -8,16 +8,8 @@
     <script type="application/javascript" src="../assets/bootstrap/js/jquery.js"></script>
     <script type="application/javascript" src="../assets/bootstrap/js/popper.js"></script>
     <script type="application/javascript" src="../assets/bootstrap/js/bootstrap.js"></script>
-    <style>
-        #form {
-            margin-top: 100px;
-        }
-
-        #login-logo {
-            width: 120px;
-            height: 120px;
-        }
-    </style>
+    <title>JivanDaan</title>
+    <link rel="stylesheet" href="../css/auth.css">
     <title>JivanDaan</title>
 </head>
 
@@ -51,10 +43,17 @@
             </div>
         </form>
         <center>
-            <a href="../index.html"><button class="btn btn-info">Back</button></a>
+            <a href="./auth.html"><button class="btn btn-info">Back</button></a>
             <button type="submit" class="btn btn-primary">Submit</button>
         </center>
     </div>
+    <script type="module" src="../js/lib/localforage.js"></script>
+    <script>
+        if (localStorage.getItem("auth-token") != null) {
+            alert("Already logged in")
+            window.location.pathname = "../index.html"
+        }
+    </script>
     <br><br><br><br>
     <br><br><br><br>
     <br><br><br><br>
