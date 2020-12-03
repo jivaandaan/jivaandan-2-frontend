@@ -1,6 +1,9 @@
 new Vue({
 
-    el : "#start-form",
+    el : "#index",
+    data : {
+        auth : true,
+    },
     methods : {
         func_donor : function() {
             if (localStorage.getItem("auth-token") == null) {
@@ -15,6 +18,17 @@ new Vue({
             } else {
                 window.location.pathname = "/html/receipent.html"
             }
+        },
+        checkAuth : function () {
+            if (localStorage.getItem("auth-token") == null) {
+                this.auth = true
+            } else {
+                this.auth = false
+            }            
+        },
+        logout : function() {
+            localStorage.clear()
+            window.location.pathname = "./index.html"
         }
     }
 })

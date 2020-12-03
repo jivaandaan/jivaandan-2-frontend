@@ -14,37 +14,55 @@
 </head>
 
 <body>
+  
   <!-- navbar -->
-  <nav class="navbar bg-dark">
-    <div class="container">
-      <div class="logo-box">
-        <a href="./index.html" class="text-white">
-          <img src="./assets/images/logo.png" alt="logo" class="logo" />
-          <span class="logo__text">JivanDaan</span>
-        </a>
-      </div>
-    </div>
-  </nav>
+  <div id="index">
+    {{ checkAuth() }}
+    <nav class="navbar bg-dark">
+      <div class="container">
+        <div class="logo-box">
+          <a href="./index.html" class="text-white">
+            <img src="./assets/images/logo.png" alt="logo" class="logo" />
+            <span class="logo__text">JivanDaan</span>
+          </a>
+        </div>
 
-  <!-- header -->
-  <header class="header container">
-    <img src="./assets/images/illus.svg" alt="illustration" class="header__img--sm" />
-    <div class="header__content">
-      <span class="text--bold green">Save&nbsp;</span>
-      &nbsp;
-      <span class="text--bold">Life&nbsp;</span>
-      &nbsp;
-      <img src="./assets/images/illus.svg" alt="illustration" class="header__img" />
-      &nbsp; &nbsp;
-      <span class="text--bold">Donate&nbsp;</span>
-      &nbsp;
-      <span class="text--bold red">Blood</span>
-    </div>
-    <div id="start-form" class="header__buttons">
-      <button v-on:click="func_donor()" class="btn btn--red">Donor</button>
-      <button v-on:click="func_rece()" class="btn btn--green">Recipient</button>
-    </div>
-  </header>
+      </div>
+    </nav>
+
+    <!-- header -->
+    <header class="header container">
+      <img src="./assets/images/illus.svg" alt="illustration" class="header__img--sm" />
+      <div class="header__content">
+        <span class="text--bold green">Save&nbsp;</span>
+        &nbsp;
+        <span class="text--bold">Life&nbsp;</span>
+        &nbsp;
+        <img src="./assets/images/illus.svg" alt="illustration" class="header__img" />
+        &nbsp; &nbsp;
+        <span class="text--bold">Donate&nbsp;</span>
+        &nbsp;
+        <span class="text--bold red">Blood</span>
+      </div>
+      <div id="start-form" class="header__buttons">
+        <button v-on:click="func_donor()" class="btn btn--red">Donor</button>
+        <button v-on:click="func_rece()" class="btn btn--green">Recipient</button>
+      </div>
+    </header>
+    <center>
+      <div v-if="auth" >
+        <a href="./html/signup.html"><button class="btn btn-outline-success">Register</button></a>&nbsp;
+        <a href="./html/login.html"><button class="btn btn-outline-danger">Login</button></a>
+      </div>
+      <div>
+        <div v-if="!auth">
+          <button v-on:click="logout" class="btn btn-outline-danger">Logout</button>
+        </div>
+      </div>
+    </center>
+  </div>
+  <br><br><br><br>
+  <br><br><br><br>
 
   <script type="module" src="/js/lib/localforage.js"></script>
   <script src="./app.js"></script>

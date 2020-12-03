@@ -50,7 +50,7 @@ new Vue({
                 this.msg_bool = false
                 this.msg_msg = ""
                 this.err_bool = true
-                this.err_msg = "Error sending request"
+                this.err_msg = "Credentails not found"
             });
         }
     }

@@ -13,93 +13,119 @@
 </head>
 
 <body>
-  <!-- navbar -->
-  <nav class="navbar bg-dark">
-    <div class="container">
-      <div class="logo-box">
-        <a href="./index.html" class="text-white">
-          <img src="../assets/images/logo.png" alt="logo" class="logo" />
-          <span class="logo__text">JivanDaan</span>
-        </a>
+  <div id="donor">
+    <!-- navbar -->
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="../index.html">
+        <img src="../assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        JivanDaan
+      </a>
+    </nav>
+
+    <br><br>
+
+    <div>
+
+      <div v-if="msg_bool" class="alert alert-primary" role="alert">
+        {{ msg }}
       </div>
-    </div>
-  </nav>
-
-  <!-- Donor Form -->
-  <div class="section form container">
-    <div class="form-container">
-      <h1 class="form__title">
-        <a href="../index.html" class="back--btn"> &larr; </a>
-        &nbsp; Donor Form
-      </h1>
-      <div class="form__body">
-        <form class="form__content" id="donor_form" action="/sam">
-          <div class="form__group">
-            <input type="text" name="name" required id="name" class="form__input" placeholder="Full Name" />
-          </div>
-          <div class="form__group">
-            <input type="email" name="email" required id="email" class="form__input" placeholder="Email ID" />
-          </div>
-          <div class="form__group">
-            <input type="number" name="age" required id="age" class="form__input" placeholder="Age" />
-          </div>
-          <div class="form__group">
-            <select name="bloodGroup" id="bloodGroup" class="form__input" placeholder="Blood Group" required>
-              <option value="A+">A+</option>
-              <option value="A-">A-</option>
-              <option value="o+">o+</option>
-              <option value="o-">o-</option>
-              <option value="B+">B+</option>
-              <option value="B-">B-</option>
-              <option value="AB+">AB+</option>
-              <option value="AB-">AB-</option>
-            </select>
-          </div>
-          <div class="form__group">
-            <input type="number" name="phone" required id="phone" class="form__input" placeholder="Phone Number" />
-          </div>
-          <div>
-            <h2 class="form__question">
-              Did you ever test +ve for covid-19 infection?
-            </h2>
-            <div class="form__group">
-              <label for="isInfected-yes"> Yes</label>
-              <input type="radio" name="isInfected" value="yes" required id="isInfected-yes" class="form__input" />
-              <label for="isInfected-no"> No</label>
-              <input type="radio" name="isInfected" value="No" required id="isInfected-no" class="form__input" />
-            </div>
-          </div>
-
-          <div class="form__group">
-            <label for="recoveryDate">
-              What was your date of recovery?
-            </label>
-            <input type="date" name="recoveryDate" required id="recoveryDate" class="form__input" />
-          </div>
-
-          <div>
-            <h2 class="form__question">
-              Did you ever Donate plasma before if yes when?
-            </h2>
-            <div class="form__group">
-              <label for="isDonated-yes">Yes</label>
-              <input type="radio" name="isDonated" value="yes" required id="isDonated-yes" class="form__input" />
-            </div>
-
-            <input type="date" name="donatedDate" required id="donatedDate" class="form__input" />
-
-            <div class="form__group">
-              <label for="isDonated-no">No</label>
-              <input type="radio" name="isDonated" value="no" required id="isDonated-no" class="form__input" />
-            </div>
-          </div>
-          <button type="submit" class="btn btn--green btn-block" id="donorSubmitBtn">
-            submit
-          </button>
-        </form>
+      <div v-if="err_bool" class="alert alert-danger" role="alert">
+        {{ err_msg }}
       </div>
+
+      <!-- Donor Form -->
+      <div class="section form container">
+        <div class="form-container">
+          <h1 class="form__title">
+            &nbsp; Donor Form
+
+          </h1>
+          <div class="form__body">
+            <form class="form__content" id="donor_form">
+              <div class="form__group">
+                <input type="text" name="name" v-model="name" required id="name" class="form__input"
+                  placeholder="Full Name" />
+              </div>
+              <div class="form__group">
+                <input type="email" name="email" v-model="email" required id="email" class="form__input"
+                  placeholder="Email ID" />
+              </div>
+              <div class="form__group">
+                <input type="number" name="age" v-model="age" required id="age" class="form__input" placeholder="Age" />
+              </div>
+              <div class="form__group">
+                <select name="bloodGroup" id="bloodGroup" v-model="blood" class="form__input" placeholder="Blood Group"
+                  required>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="o+">o+</option>
+                  <option value="o-">o-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <input type="number" name="phone" v-model="phone" required id="phone" class="form__input"
+                  placeholder="Phone Number" />
+              </div>
+              <div>
+                <h2 class="form__question">
+                  Did you ever test +ve for covid-19 infection?
+                </h2>
+                <div class="form__group">
+                  <label for="isInfected-yes"> Yes</label>
+                  <input type="radio" name="isInfected" v-model="isInfected" value="yes" required id="isInfected-yes"
+                    class="form__input" />
+                  <label for="isInfected-no"> No</label>
+                  <input type="radio" name="isInfected" v-model="isInfected" value="No" required id="isInfected-no"
+                    class="form__input" />
+                </div>
+              </div>
+              <br>
+              <div class="form__group">
+                <label for="recoveryDate">
+                  What was your date of recovery?
+                </label>
+                <input type="date" name="recoveryDate" v-model="date_recovery" required id="recoveryDate"
+                  class="form__input" />
+              </div>
+              <br>
+              <div>
+                <h2 class="form__question">
+                  Did you ever Donate plasma before if yes when?
+                </h2>
+                <div class="form__group">
+                  <label for="isDonated-yes">Yes</label>
+                  <input type="radio" name="isDonated" v-model="donatePlasma" value="yes" required id="isDonated-yes"
+                    class="form__input" />
+                </div>
+
+                <input type="date" name="donatedDate" required id="donatedDate" class="form__input" />
+
+                <div class="form__group">
+                  <label for="isDonated-no">No</label>
+                  <input type="radio" name="isDonated" v-model="donatePlasma" value="no" required id="isDonated-no"
+                    class="form__input" />
+                </div>
+              </div>
+              <br>
+              <button v-on:click="donor_submit" class="btn btn--green btn-block" id="donorSubmitBtn">
+                submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <br>
+      <center>
+        <a href="/index.html"><button v-on:click="func_donor()" class="btn btn--red">Go Back</button></a> &nbsp;
+        <button v-if="auth" v-on:click="logout" class="btn btn-outline-danger">Logout</button>
+      </center>
     </div>
   </div>
+
 
   <script type="module" src="../js/lib/localforage.js"></script>
   <script>
@@ -108,7 +134,11 @@
       window.location.pathname = "../index.html"
     }
   </script>
-
+  <script src="../js/vue/vue.js"></script>
+  <script src="../js/form/donor.js"></script>
+  <br><br><br><br>
+  <br><br><br><br>
+  <br><br><br><br>
 </body>
 
 
