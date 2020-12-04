@@ -11,36 +11,24 @@ new Vue({
         age: "",
         phone: "",
         blood: "",
-        isInfected: "",
+        isInfected: false,
+        isDonated: false,
+        isInfectedbool: false,
+        isDonatedbool: false,
         date_recovery: "",
-        donatePlasma: "",
         date_plasma: "",
         auth: true,
-        isInfectedDate: "false",
-        isIDonateDate: "false",
     },
 
     methods: {
         donor_submit: function () {
-            console.log(this.name, this.email, this.age, this.phone, this.blood, this.isInfected, this.date_recovery, this.donatePlasma, this.date_plasma)
-            if (localStorage.getItem("form-submitted") == null) {
-                localStorage.setItem("form-submitted", "1")
-            } else {
-                let num = parseInt(localStorage.getItem("form-submitted"))
-                num = num + 1
-                localStorage.setItem("form-submitted", `${num}`)
-                if (num > 10) {
-                    this.err_bool = true
-                    this.err_msg = "Cannot fill more than 10 registrations"
-                    return
-                }
-            }
-
-            if (this.isInfectedDate == "false") {
+            
+            if (this.isInfectedDate == false) {
                 this.date_recovery = ""
+                this.isInfectedDate = ""
             }
-            if (this.isIDonateDate == "false") {
-                this.date_plasma = ""
+            if (this.isIDonateDate == false) {
+                this.donatedDate = ""
             }
 
             let phoneno = /^\d{10}$/;
@@ -49,15 +37,28 @@ new Vue({
                 alert("Wrong phone number, please enter a 10 digi number without +91");
                 return;
             }
-
+            let isInfectedx = ""
+            let isDonatedx = ""
+            if (this.isInfectedbool === false) {
+                this.date_recovery = "2000-10-10"
+                isInfectedx = "null"
+            } else {
+                isInfectedx = "true"
+            }
+            if (this.isDonatedbool === false) {
+                this.date_plasma = "2000-10-10"
+                isDonatedx = "null"
+            } else {
+                isDonatedx = "true"
+            }
 
             let data = JSON.stringify({
                 "name": this.name,
                 "email": this.email,
                 "age": this.age,
                 "phone": this.phone,
-                "isDonated": `${this.isIDonateDate}`,
-                "isInfected": `${this.isInfectedDate}`,
+                "isDonated": isDonatedx,
+                "isInfected": isInfectedx,
                 "recoveryDate": this.date_recovery,
                 "donatedDate": this.date_plasma,
                 "blood_group": this.blood
@@ -77,12 +78,24 @@ new Vue({
             };
 
             fetch("https://jivaandaan.herokuapp.com/plasma/api/donor/", requestOptions)
-                .then(response => response.text())
+                .then(response => {
+                    if (response.status == 400 ) {
+                        this.err_bool = true
+                        this.err_msg = "Bad Request"
+                        this.msg_bool = false
+                        this.msg = ""
+                        return
+                    } else {
+                        return response.text()
+                    }
+                })
                 .then((data) => {
                     console.log(data)
+                    alert("Success !!")
                     window.location.pathname = "../../index.html"
                 })
-                .catch(() => {
+                .catch((err) => {
+                    console.log(err)
                     this.err_bool = true
                     this.err_msg = "Error"
                     return
@@ -95,17 +108,17 @@ new Vue({
             window.location.pathname = "./index.html"
         },
         infectDate: function (e) {
-            if (e == 1) {
-                this.isInfectedDate = "true"
-            } else {
-                this.isInfectedDate = "false"
+            if (e === 1) {
+                this.isInfectedbool = true
+            } else if (e === 2) {
+                this.isInfectedbool = false
             }
         },
         donateDate: function (e) {
-            if (e == 1) {
-                this.isIDonateDate = "true"
-            } else {
-                this.isIDonateDate = "false"
+            if (e === 1) {
+                this.isDonatedbool = true
+            } else if (e === 2) {
+                this.isDonatedbool = false
             }
         }
     }

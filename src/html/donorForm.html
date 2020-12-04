@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css" />
   <link rel="stylesheet" href="../css/App.css" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <script type="application/javascript" src="../assets/bootstrap/js/jquery.js"></script>
   <script type="application/javascript" src="../assets/bootstrap/js/popper.js"></script>
   <script type="application/javascript" src="../assets/bootstrap/js/bootstrap.js"></script>
@@ -26,6 +27,7 @@
       </div>
     </nav>
 
+    <br><br>
     <br><br>
 
     <div>
@@ -74,45 +76,48 @@
                 <input type="number" name="phone" v-model="phone" required id="phone" class="form__input"
                   placeholder="Phone Number" />
               </div>
+              
               <div>
                 <h2 class="form__question">
                   Did you ever test +ve for covid-19 infection?
                 </h2>
                 <div class="form__group">
                   <label for="isInfected-yes"> Yes</label>
-                  <input type="radio" name="isInfected" v-model="isInfected" value="yes" v-on:click="infectDate(1)"
+                  <input type="radio" name="isInfected" v-model="isInfected" value="true" v-on:click="infectDate(1)"
                     required id="isInfected-yes" class="form__input" />
                   <label for="isInfected-no"> No</label>
-                  <input type="radio" name="isInfected" v-model="isInfected" value="No" v-on:click="infectDate(2)"
+                  <input type="radio" name="isInfected" v-model="isInfected" value="false" v-on:click="infectDate(2)"
                     required id="isInfected-no" class="form__input" />
+                </div>
+                <div v-if="isInfectedbool" class="form__group">
+                  <label for="recoveryDate"> What was your date of recovery? </label>
+                  <input type="date" name="recoveryDate" v-model="date_recovery" class="form__input" />
                 </div>
               </div>
               <br>
-              <div v-if="isInfectedDate" class="form__group">
-                <label for="recoveryDate">
-                  What was your date of recovery?
-                </label>
-                <input type="date" name="recoveryDate" v-model="date_recovery" class="form__input" />
-              </div>
-              <br>
+
+
               <div>
                 <h2 class="form__question">
                   Did you ever Donate plasma before if yes when?
                 </h2>
                 <div class="form__group">
                   <label for="isDonated-yes">Yes</label>
-                  <input type="radio" name="isDonated" v-model="isIDonateDate" v-on:click="donateDate(1)" value="yes"
+                  <input type="radio" name="isDonated" v-model="isDonated" v-on:click="donateDate(1)" value="yes"
                     required id="isDonated-yes" class="form__input" />
-                </div>
-
-                <input type="date" name="donatedDate" v-model="date_plasma" required id="donatedDate"
-                  class="form__input" />
-
-                <div class="form__group">
                   <label for="isDonated-no">No</label>
-                  <input type="radio" name="isDonated" v-model="donatePlasma" value="no" v-on:click="donateDate(2)"
+                  <input type="radio" name="isDonated" v-model="isDonated" value="no" v-on:click="donateDate(2)"
                     required id="isDonated-no" class="form__input" />
                 </div>
+                <div v-if="isDonatedbool">
+                  <input type="date" name="donatedDate" v-model="date_plasma" required id="donatedDate"
+                    class="form__input" />
+                </div>
+
+                <!-- 
+                <div class="form__group">
+                  
+                </div> -->
               </div>
               <br>
               <button v-on:click="donor_submit" class="btn btn--green btn-block" id="donorSubmitBtn">
