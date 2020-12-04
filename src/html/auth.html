@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/auth.css">
+    <script type="application/javascript" src="../assets/bootstrap/js/jquery.js"></script>
+    <script type="application/javascript" src="../assets/bootstrap/js/popper.js"></script>
+    <script type="application/javascript" src="../assets/bootstrap/js/bootstrap.js"></script>
+    <script type="application/javascript" src="../js/vue/vue.js"></script>
+    <title>JivanDaan</title>
+    <style>
+        .auth-button {
+            width: 240px;
+            height: 70px;
+            border-radius: 10px;
+        }
+
+        .text-auth {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="../index.html">
+            <img src="../assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            JivanDaan
+        </a>
+    </nav>
+
+    <center>
+        <div id="auth-form">
+            <div id="form" class="container">
+                <img src="../assets/images/logo.png" id="login-logo" alt="logo" />
+                <br> <br>
+                <h2 class="text-auth">Authentication Page</h2>
+                <a href="./login.html"><button class="auth-button btn btn-info" id="login">LOGIN</button></a>
+                <br><br>
+                <a href="./signup.html"><button class="auth-button btn btn-primary" id="signup">SIGNUP</button></a>
+            </div>
+            <br>
+            <a href="../index.html"><button class="auth-button btn btn-danger">Back</button></a>
+        </div>
+    </center>
+
+    <script type="module" src="../js/lib/localforage.js"></script>
+    <script>
+        if (localStorage.getItem("auth-token") != null) {
+            alert("already logged in")
+            window.location.pathname = "../../index.html"
+        }
+    </script>
+
+</body>
+
+</html>

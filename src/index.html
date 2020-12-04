@@ -2,23 +2,71 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/src/assets/bootstrap/css/bootstrap.css">
-  <script src="/src/assets/bootstrap/js/jquery.js"></script>
-  <script src="/src/assets/bootstrap/js/popper.js"></script>
-  <script src="/src/assets/bootstrap/js/bootstrap.js"></script>
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="./css/App.css" />
+  <script type="application/javascript" src="./assets/bootstrap/js/jquery.js"></script>
+  <script type="application/javascript" src="./assets/bootstrap/js/popper.js"></script>
+  <script type="application/javascript" src="./assets/bootstrap/js/bootstrap.js"></script>
+  <script type="application/javascript" src="./js/vue/vue.js"></script>
+  <title>JivanDaan</title>
 </head>
 
 <body>
-  <br>
-  <div class="container">
+  
+  <!-- navbar -->
+  <div id="index">
+    {{ checkAuth() }}
+    <nav class="navbar bg-dark">
+      <div class="container">
+        <div class="logo-box">
+          <a href="./index.html" class="text-white">
+            <img src="./assets/images/logo.png" alt="logo" class="logo" />
+            <span class="logo__text">JivanDaan</span>
+          </a>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- header -->
+    <header class="header container">
+      <img src="./assets/images/illus.svg" alt="illustration" class="header__img--sm" />
+      <div class="header__content">
+        <span class="text--bold green">Save&nbsp;</span>
+        &nbsp;
+        <span class="text--bold">Life&nbsp;</span>
+        &nbsp;
+        <img src="./assets/images/illus.svg" alt="illustration" class="header__img" />
+        &nbsp; &nbsp;
+        <span class="text--bold">Donate&nbsp;</span>
+        &nbsp;
+        <span class="text--bold red">Blood</span>
+      </div>
+      <div id="start-form" class="header__buttons">
+        <button v-on:click="func_donor()" class="btn btn--red">Donor</button>
+        <button v-on:click="func_rece()" class="btn btn--green">Recipient</button>
+      </div>
+    </header>
     <center>
-      <h1 id="heading">hello world</h1>
-      <button class="btn-primary">Hello</button>
+      <div v-if="auth" >
+        <a href="./html/signup.html"><button class="btn btn-outline-success">Register</button></a>&nbsp;
+        <a href="./html/login.html"><button class="btn btn-outline-danger">Login</button></a>
+      </div>
+      <div>
+        <div v-if="!auth">
+          <button v-on:click="logout" class="btn btn-outline-danger">Logout</button>
+        </div>
+      </div>
     </center>
   </div>
+  <br><br><br><br>
+  <br><br><br><br>
+
+  <script type="module" src="/js/lib/localforage.js"></script>
+  <script src="./app.js"></script>
+
 </body>
 
 </html>
