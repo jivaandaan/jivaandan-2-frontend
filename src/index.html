@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  
+
   <!-- navbar -->
   <div id="index">
     {{ checkAuth() }}
@@ -51,14 +51,16 @@
       </div>
     </header>
     <center>
-      <div v-if="auth" >
+      <div v-if="auth">
         <a href="./html/signup.html"><button class="btn btn-outline-success">Register</button></a>&nbsp;
         <a href="./html/login.html"><button class="btn btn-outline-danger">Login</button></a>
       </div>
       <div>
         <div v-if="!auth">
           <button v-on:click="logout" class="btn btn-outline-danger">Logout</button>
+          <a href="./html/dashboard_donor.html"><button class="btn btn-outline-success">Dashboard</button></a>
         </div>
+
       </div>
     </center>
   </div>
